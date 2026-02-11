@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dotnet new:*)",
+      "Bash(dotnet build:*)",
+      "Bash(taskkill:*)",
+      "Bash(cmd /c \"taskkill /PID 47472 /F\")",
+      "Bash(cmd /c:*)",
+      "Bash(powershell:*)"
+    ]
+  }
+}

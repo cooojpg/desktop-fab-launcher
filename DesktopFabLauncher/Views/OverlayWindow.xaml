@@ -1,0 +1,63 @@
+<Window x:Class="DesktopFabLauncher.Views.OverlayWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:DesktopFabLauncher.ViewModels"
+        xmlns:models="clr-namespace:DesktopFabLauncher.Models"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Topmost="True"
+        ShowActivated="False"
+        Focusable="False"
+        ShowInTaskbar="False"
+        IsHitTestVisible="False"
+        SizeToContent="WidthAndHeight"
+        Title="DesktopFabLauncher Overlay">
+
+    <Border Opacity="{Binding OverlayOpacity}"
+            Background="{Binding BackgroundBrush}"
+            CornerRadius="8"
+            Padding="8,6">
+        <ItemsControl ItemsSource="{Binding Slots}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="{x:Type vm:ClickSlot}">
+                    <Ellipse Width="20" Height="20" Margin="3,0">
+                        <Ellipse.Style>
+                            <Style TargetType="Ellipse">
+                                <!-- Default: empty slot -->
+                                <Setter Property="Fill" Value="#30FFFFFF"/>
+                                <Setter Property="Stroke" Value="#50FFFFFF"/>
+                                <Setter Property="StrokeThickness" Value="1.5"/>
+                                <Style.Triggers>
+                                    <!-- Filled with Left click: white -->
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding IsFilled}" Value="True"/>
+                                            <Condition Binding="{Binding Type}" Value="{x:Static models:ClickType.Left}"/>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Fill" Value="#DDFFFFFF"/>
+                                        <Setter Property="Stroke" Value="#FFFFFFFF"/>
+                                    </MultiDataTrigger>
+                                    <!-- Filled with Right click: red -->
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding IsFilled}" Value="True"/>
+                                            <Condition Binding="{Binding Type}" Value="{x:Static models:ClickType.Right}"/>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Fill" Value="#DDFF6666"/>
+                                        <Setter Property="Stroke" Value="#FFFF6666"/>
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Ellipse.Style>
+                    </Ellipse>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Border>
+</Window>
