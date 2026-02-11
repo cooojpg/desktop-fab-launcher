@@ -1,0 +1,9 @@
+{
+  "LongPressThresholdMs": 500,
+  "MovementThresholdPx": 5,
+  "InputTimeoutMs": 2000,
+  "ShortInputTimeoutMs": 700,
+  "MaxInputCount": 5,
+  "ResultDisplayMs": 600,
+  "OverlayOpacity": 0.85
+}
