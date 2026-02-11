@@ -1,2 +1,13 @@
 # desktop-fab-launcher
-A draggable always-on-top floating button that opens a shortcut launcher on Windows.
+
+本アプリは、Logicool Options のような操作感を再現したマウスジェスチャーツールである。
+
+特定のマウス操作（例：トリプルクリック、特定ボタン長押しなど）をトリガーに、
+カーソル近くに右クリックメニュー風のパネルを表示し、選択された機能を実行する。
+
+機能例：
+・特定のアプリを起動する
+・特定のウェブサイトを起動する
+・仮想デスクトップの切り替え
+
+C# を使用した Windows デスクトップアプリとして実装する。
